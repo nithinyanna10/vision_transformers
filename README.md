@@ -177,13 +177,86 @@ vision_transformers/
 
 **Note**: The `data/` folder is not included in this repository. Download the dataset using the instructions above.
 
+## 🚀 Advanced Features & Enhancements
+
+### 🔍 Explainable AI (XAI)
+
+Our project includes comprehensive explainability features to understand how the AI makes decisions:
+
+#### Grad-CAM Visualization
+Shows which regions of the chest X-ray the model focuses on for its diagnosis:
+
+![Grad-CAM Demo](results/gradcam_demo.png)
+
+#### Vision Transformer Attention
+Reveals how the transformer processes different parts of the image:
+
+![Attention Demo](results/attention_demo_new.png)
+
+#### LIME Explanations
+Identifies the most important features that influence the prediction:
+
+![LIME Demo](results/lime_demo.png)
+
+#### Comprehensive XAI Analysis
+Combines multiple explanation methods for complete understanding:
+
+![Comprehensive XAI](results/comprehensive_xai_demo.png)
+
+### 🏗️ Advanced Model Architectures
+
+#### Hybrid CNN-ViT
+- **ResNet50 backbone** + **Vision Transformer** with cross-attention
+- **63M+ parameters** for enhanced feature extraction
+- **Cross-attention mechanisms** between CNN and ViT features
+
+#### Multi-Scale Vision Transformer
+- **Parallel processing** with different patch sizes (8x8, 16x16, 32x32)
+- **60M+ parameters** for multi-resolution analysis
+- **Scale-aware feature fusion** for comprehensive understanding
+
+#### Ensemble Methods
+- **Weighted voting** of multiple architectures
+- **Robust performance** through model diversity
+- **Improved accuracy** and generalization
+
+### 🎯 Interactive XAI Demo
+
+Try our interactive explainability demo:
+
+```bash
+# Run the XAI demonstration
+python demo_xai.py
+
+# Launch interactive Streamlit app
+streamlit run xai_demo.py
+```
+
+### 📊 Model Comparison Framework
+
+Compare different architectures with comprehensive metrics:
+
+```bash
+# Run model comparison
+python compare_models.py
+
+# Train advanced models
+python train_advanced.py --model_type hybrid_cnn_vit
+```
+
 ## 🔬 Research Impact
 
 This project demonstrates the effectiveness of Vision Transformers in medical image analysis, achieving state-of-the-art performance on pneumonia detection. The model's high accuracy and AUC score make it suitable for clinical decision support systems.
+
+### Key Research Contributions:
+- **Advanced ViT architectures** for medical imaging
+- **Comprehensive XAI framework** for model interpretability
+- **Production-ready MLOps pipeline** with experiment tracking
+- **Multi-scale feature extraction** for enhanced accuracy
 
 ## 📄 License
 
 This project is for educational and research purposes. Please ensure compliance with medical data regulations when using in clinical settings.
 
 ---
-*Built with PyTorch, Vision Transformers, and Streamlit*
+*Built with PyTorch, Vision Transformers, Streamlit, and advanced XAI techniques*
