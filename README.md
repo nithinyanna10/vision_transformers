@@ -112,6 +112,8 @@ python download_dataset.py
 python train.py
 ```
 
+**Note**: The trained model checkpoint is not included in this repository due to size constraints. You'll need to train the model yourself using the above command. Training typically takes 20-30 minutes on a modern GPU or 2-3 hours on CPU.
+
 ### 4. Run Interactive Demo
 ```bash
 streamlit run app.py

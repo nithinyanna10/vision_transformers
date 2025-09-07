@@ -49,9 +49,8 @@ Thumbs.db
 # Jupyter Notebook
 .ipynb_checkpoints
 
-# Model checkpoints (keep the best one)
+# Model checkpoints (too large for GitHub)
 models/*.pth
-!models/best_model.pth
 
 # Training logs
 logs/
