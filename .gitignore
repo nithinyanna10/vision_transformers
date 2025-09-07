@@ -51,6 +51,8 @@ Thumbs.db
 
 # Model checkpoints (too large for GitHub)
 models/*.pth
+models/checkpoint_*.pth
+models/best_model.pth
 
 # Training logs
 logs/
