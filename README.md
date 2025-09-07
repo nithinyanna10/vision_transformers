@@ -244,6 +244,33 @@ python compare_models.py
 python train_advanced.py --model_type hybrid_cnn_vit
 ```
 
+### 🎯 Advanced Training Techniques
+
+#### Self-Supervised Learning (MAE)
+Pre-train the model using Masked Autoencoder approach for better feature learning:
+
+![MAE Pre-training](results/mae_demo.png)
+
+#### Adversarial Training
+Make the model robust against adversarial attacks:
+
+![Adversarial Training](results/adversarial_demo.png)
+
+#### Uncertainty Quantification
+Understand model confidence and prediction reliability:
+
+![Uncertainty Analysis](results/uncertainty_demo.png)
+
+#### Advanced Training Pipeline
+```bash
+# Train with all advanced techniques
+python train_advanced_techniques.py --model_type hybrid_cnn_vit --use_mae --use_adversarial --use_uncertainty
+
+# Train with specific techniques
+python train_advanced_techniques.py --use_adversarial  # Only adversarial training
+python train_advanced_techniques.py --use_uncertainty  # Only uncertainty quantification
+```
+
 ## 🔬 Research Impact
 
 This project demonstrates the effectiveness of Vision Transformers in medical image analysis, achieving state-of-the-art performance on pneumonia detection. The model's high accuracy and AUC score make it suitable for clinical decision support systems.
