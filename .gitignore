@@ -1,0 +1,99 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Model checkpoints (keep the best one)
+models/*.pth
+!models/best_model.pth
+
+# Training logs
+logs/
+*.log
+
+# Large dataset files (not included in repository)
+data/
+
+# Keep the results directory with our generated images
+# results/ is intentionally NOT ignored so we can show the prediction images
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Streamlit
+.streamlit/
+
+# Kaggle
+.kaggle/
+
+# Weights and biases
+wandb/
+
+# Tensorboard
+runs/
+tensorboard/
+
+# PyTorch
+*.pkl
+*.pickle
+
+# Keep important files
+!requirements.txt
+!README.md
+!PROJECT_SUMMARY.md
+!configs/
+!src/
+!app.py
+!train.py
+!download_dataset.py
+!generate_results.py
+!test_predictions.py
+!setup.py
