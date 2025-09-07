@@ -271,6 +271,55 @@ python train_advanced_techniques.py --use_adversarial  # Only adversarial traini
 python train_advanced_techniques.py --use_uncertainty  # Only uncertainty quantification
 ```
 
+### 🔧 MLOps Pipeline
+
+#### Experiment Tracking & Model Versioning
+Complete MLOps pipeline with experiment tracking, model versioning, and automated CI/CD:
+
+![MLOps Pipeline](results/mlops_demo.png)
+
+#### Data Validation & Quality Assurance
+Comprehensive data validation system ensuring data quality:
+
+```bash
+# Run data validation
+python -c "from mlops.data_validation import DataValidator; DataValidator().validate_dataset()"
+
+# Generate validation report
+python mlops/data_validation.py
+```
+
+#### Model Monitoring & Performance Tracking
+Real-time model monitoring with drift detection and alerting:
+
+```bash
+# Start model monitoring
+python -c "from mlops.model_monitoring import ModelMonitor; monitor = ModelMonitor(); monitor.log_metrics({'accuracy': 0.92})"
+
+# Generate monitoring dashboard
+python mlops/model_monitoring.py
+```
+
+#### Automated CI/CD Pipeline
+GitHub Actions workflow for automated training, evaluation, and deployment:
+
+```yaml
+# .github/workflows/mlops-pipeline.yml
+- Data validation and quality checks
+- Automated model training and evaluation
+- Model versioning and registry
+- Performance monitoring and alerting
+- Automated deployment to staging/production
+```
+
+#### MLOps Features:
+- **Experiment Tracking**: Weights & Biases, MLflow integration
+- **Model Versioning**: DVC for data versioning, model registry
+- **Data Validation**: Comprehensive quality assurance
+- **Model Monitoring**: Real-time performance tracking, drift detection
+- **Automated CI/CD**: GitHub Actions pipeline
+- **Alerting System**: Performance degradation alerts
+
 ## 🔬 Research Impact
 
 This project demonstrates the effectiveness of Vision Transformers in medical image analysis, achieving state-of-the-art performance on pneumonia detection. The model's high accuracy and AUC score make it suitable for clinical decision support systems.

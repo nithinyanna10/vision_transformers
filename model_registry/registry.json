@@ -1,0 +1,18 @@
+{
+  "models": [
+    {
+      "model_id": "test_model_20250907_140240",
+      "model_name": "test_model",
+      "model_path": "test_path.pth",
+      "timestamp": "2025-09-07T14:02:40.035912",
+      "metadata": {},
+      "tags": [],
+      "status": "registered"
+    }
+  ],
+  "versions": {
+    "test_model": [
+      "test_model_20250907_140240"
+    ]
+  }
+}

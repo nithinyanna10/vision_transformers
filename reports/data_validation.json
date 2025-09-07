@@ -1,0 +1,67 @@
+{
+  "timestamp": null,
+  "data_path": "data/chest_xray",
+  "validation_results": {
+    "image_quality": {
+      "total_images": 0,
+      "valid_images": 0,
+      "invalid_images": [],
+      "corrupted_images": [],
+      "format_issues": [],
+      "size_issues": [],
+      "quality_metrics": {
+        "min_size": Infinity,
+        "max_size": 0,
+        "avg_size": 0,
+        "size_std": 0
+      }
+    },
+    "class_distribution": {
+      "train": {
+        "NORMAL": 0,
+        "PNEUMONIA": 0
+      },
+      "val": {
+        "NORMAL": 0,
+        "PNEUMONIA": 0
+      },
+      "test": {
+        "NORMAL": 0,
+        "PNEUMONIA": 0
+      },
+      "total": {
+        "NORMAL": 0,
+        "PNEUMONIA": 0
+      },
+      "balance_issues": [
+        "Empty split: train",
+        "Empty split: val",
+        "Empty split: test"
+      ]
+    },
+    "data_integrity": {
+      "duplicate_files": [],
+      "naming_issues": [],
+      "file_consistency": true,
+      "checksum_validation": true
+    }
+  },
+  "quality_metrics": {
+    "overall_score": 0,
+    "total_issues": 4,
+    "total_images": 0,
+    "validation_status": "FAIL"
+  },
+  "issues": [
+    "Data directory does not exist",
+    "Empty data split: train",
+    "Empty data split: val",
+    "Empty data split: test"
+  ],
+  "recommendations": [
+    "Review and fix all identified issues before training",
+    "Ensure proper class balance in training data",
+    "Validate image quality and format consistency",
+    "Check for data leakage between splits"
+  ]
+}

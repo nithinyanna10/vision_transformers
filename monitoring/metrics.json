@@ -1,0 +1,191 @@
+[
+  {
+    "timestamp": "2025-09-07T14:02:40.036499",
+    "model_version": "latest",
+    "metrics": {
+      "accuracy": 0.92,
+      "latency": 150,
+      "error_rate": 0.01
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.716461",
+    "model_version": "v1.0",
+    "metrics": {
+      "accuracy": 0.9271557472069657,
+      "latency": 161.2156905273647,
+      "error_rate": 0.01194074425301673
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.717015",
+    "model_version": "v1.1",
+    "metrics": {
+      "accuracy": 0.9476400920834389,
+      "latency": 156.08898239741706,
+      "error_rate": 0.024446159618366364
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.717115",
+    "model_version": "v1.2",
+    "metrics": {
+      "accuracy": 0.9251441498196021,
+      "latency": 160.30095372612095,
+      "error_rate": 0.016009499323084875
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.717218",
+    "model_version": "v1.3",
+    "metrics": {
+      "accuracy": 0.9970546298130945,
+      "latency": 176.6176265594417,
+      "error_rate": 0.01588619474954205
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.717319",
+    "model_version": "v1.4",
+    "metrics": {
+      "accuracy": 0.9397640522100823,
+      "latency": 143.6946151071931,
+      "error_rate": 0.004709367887275564
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.717498",
+    "model_version": "v1.5",
+    "metrics": {
+      "accuracy": 0.9351793844098654,
+      "latency": 153.30045596218676,
+      "error_rate": 0.00036604104210857
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.717727",
+    "model_version": "v1.6",
+    "metrics": {
+      "accuracy": 0.9337252038074904,
+      "latency": 117.74568257620696,
+      "error_rate": 0.00030975062101474545
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.717816",
+    "model_version": "v1.7",
+    "metrics": {
+      "accuracy": 0.9021375945274156,
+      "latency": 143.3036550521053,
+      "error_rate": 0.007386535882790157
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.717919",
+    "model_version": "v1.8",
+    "metrics": {
+      "accuracy": 0.9056939258148007,
+      "latency": 163.5919549786935,
+      "error_rate": 0.00975219618656493
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.718023",
+    "model_version": "v1.9",
+    "metrics": {
+      "accuracy": 0.9677807191478492,
+      "latency": 186.86827516641065,
+      "error_rate": 0.010145374482046159
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.718131",
+    "model_version": "v1.10",
+    "metrics": {
+      "accuracy": 0.8794971482668479,
+      "latency": 153.72908629538856,
+      "error_rate": 0.015856539797326864
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.718710",
+    "model_version": "v1.11",
+    "metrics": {
+      "accuracy": 0.8866173528181894,
+      "latency": 134.5636184448649,
+      "error_rate": 0.0019030653614210875
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.718828",
+    "model_version": "v1.12",
+    "metrics": {
+      "accuracy": 0.9532260346121632,
+      "latency": 140.50109377678086,
+      "error_rate": 0.007967906483133147
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.718971",
+    "model_version": "v1.13",
+    "metrics": {
+      "accuracy": 0.9069334153485258,
+      "latency": 168.90763380175133,
+      "error_rate": 0.0032841226138899593
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.719091",
+    "model_version": "v1.14",
+    "metrics": {
+      "accuracy": 0.9453281371074576,
+      "latency": 192.44312394025266,
+      "error_rate": 0.005440378655320514
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.719274",
+    "model_version": "v1.15",
+    "metrics": {
+      "accuracy": 0.940649305211023,
+      "latency": 135.38517193540693,
+      "error_rate": 0.014181818477567132
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.719505",
+    "model_version": "v1.16",
+    "metrics": {
+      "accuracy": 0.9288763885629246,
+      "latency": 165.49268106858673,
+      "error_rate": 0.006427845944128924
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.719636",
+    "model_version": "v1.17",
+    "metrics": {
+      "accuracy": 0.919611157182009,
+      "latency": 131.34816686877838,
+      "error_rate": 0.006414503320943712
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.719801",
+    "model_version": "v1.18",
+    "metrics": {
+      "accuracy": 0.9149486369721368,
+      "latency": 125.04433636070301,
+      "error_rate": 0.005083366145832069
+    }
+  },
+  {
+    "timestamp": "2025-09-07T14:02:58.719977",
+    "model_version": "v1.19",
+    "metrics": {
+      "accuracy": 0.9508613530371817,
+      "latency": 176.46527614302474,
+      "error_rate": 0.0004636232402053473
+    }
+  }
+]

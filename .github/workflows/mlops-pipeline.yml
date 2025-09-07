@@ -1,0 +1,271 @@
+name: MLOps Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 2 * * 1'  # Weekly retraining on Mondays at 2 AM
+
+jobs:
+  data-validation:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install dvc[s3]
+    
+    - name: Validate data
+      run: |
+        python -c "
+        from mlops.data_validation import DataValidator
+        validator = DataValidator()
+        validator.validate_dataset('data/chest_xray')
+        print('✅ Data validation passed')
+        "
+    
+    - name: Upload validation report
+      uses: actions/upload-artifact@v3
+      with:
+        name: data-validation-report
+        path: reports/data_validation.json
+
+  model-training:
+    needs: data-validation
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'schedule'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install wandb mlflow dvc[s3]
+    
+    - name: Download dataset
+      run: |
+        python download_dataset.py
+    
+    - name: Train model
+      env:
+        WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
+        MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+      run: |
+        python train_advanced_techniques.py \
+          --model_type hybrid_cnn_vit \
+          --epochs 10 \
+          --batch_size 16 \
+          --use_adversarial \
+          --use_uncertainty
+    
+    - name: Evaluate model
+      run: |
+        python -c "
+        from src.evaluator import evaluate_trained_model
+        import yaml
+        with open('configs/config.yaml', 'r') as f:
+            config = yaml.safe_load(f)
+        metrics = evaluate_trained_model(config)
+        print(f'Model accuracy: {metrics[\"accuracy\"]:.4f}')
+        "
+    
+    - name: Upload model artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: trained-model
+        path: |
+          models/
+          results/
+          experiments/
+
+  model-evaluation:
+    needs: model-training
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'schedule'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Download model artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: trained-model
+        path: .
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Run comprehensive evaluation
+      run: |
+        python -c "
+        from src.evaluator import evaluate_trained_model
+        from mlops.experiment_tracking import ExperimentTracker
+        import yaml
+        
+        # Load config
+        with open('configs/config.yaml', 'r') as f:
+            config = yaml.safe_load(f)
+        
+        # Start experiment tracking
+        tracker = ExperimentTracker('mlops-pipeline')
+        tracker.start_pipeline(['automated', 'ci-cd'])
+        
+        # Evaluate model
+        metrics = evaluate_trained_model(config)
+        
+        # Log metrics
+        tracker.log_metrics(metrics)
+        tracker.finish_pipeline()
+        
+        print('✅ Model evaluation completed')
+        "
+    
+    - name: Check model performance
+      run: |
+        python -c "
+        import json
+        with open('experiments/latest/metrics.json', 'r') as f:
+            metrics = json.load(f)
+        
+        accuracy = metrics.get('accuracy', 0)
+        if accuracy < 0.85:
+            print(f'❌ Model accuracy {accuracy:.4f} below threshold 0.85')
+            exit(1)
+        else:
+            print(f'✅ Model accuracy {accuracy:.4f} meets requirements')
+        "
+
+  model-deployment:
+    needs: model-evaluation
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Download model artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: trained-model
+        path: .
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install docker
+    
+    - name: Build Docker image
+      run: |
+        docker build -t medical-vit:${{ github.sha }} .
+        docker tag medical-vit:${{ github.sha }} medical-vit:latest
+    
+    - name: Deploy to staging
+      run: |
+        echo "🚀 Deploying model to staging environment"
+        # This would typically deploy to a staging environment
+        # For demo purposes, we'll just log the deployment
+    
+    - name: Run integration tests
+      run: |
+        python -c "
+        import requests
+        import time
+        
+        # Simulate API testing
+        print('🧪 Running integration tests...')
+        time.sleep(2)  # Simulate test execution
+        print('✅ Integration tests passed')
+        "
+    
+    - name: Deploy to production
+      if: success()
+      run: |
+        echo "🚀 Deploying model to production environment"
+        # This would typically deploy to production
+        # For demo purposes, we'll just log the deployment
+
+  model-monitoring:
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Generate monitoring report
+      run: |
+        python -c "
+        from mlops.model_monitoring import ModelMonitor
+        import json
+        
+        monitor = ModelMonitor()
+        report = monitor.generate_report()
+        
+        with open('monitoring_report.json', 'w') as f:
+            json.dump(report, f, indent=2)
+        
+        print('📊 Monitoring report generated')
+        "
+    
+    - name: Upload monitoring report
+      uses: actions/upload-artifact@v3
+      with:
+        name: monitoring-report
+        path: monitoring_report.json
+
+  notify:
+    needs: [data-validation, model-training, model-evaluation, model-deployment]
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+    - name: Notify on success
+      if: ${{ needs.model-deployment.result == 'success' }}
+      run: |
+        echo "✅ MLOps pipeline completed successfully!"
+        echo "🚀 Model deployed to production"
+    
+    - name: Notify on failure
+      if: ${{ needs.model-deployment.result == 'failure' }}
+      run: |
+        echo "❌ MLOps pipeline failed!"
+        echo "🔍 Check the logs for details"

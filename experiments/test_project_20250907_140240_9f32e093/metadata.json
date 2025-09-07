@@ -1,0 +1,15 @@
+{
+  "experiment_id": "test_project_20250907_140240_9f32e093",
+  "timestamp": "2025-09-07T14:02:40.035103",
+  "project_name": "test_project",
+  "config": {
+    "learning_rate": 0.001,
+    "batch_size": 32
+  },
+  "metrics": {
+    "accuracy": 0.95,
+    "loss": 0.05
+  },
+  "artifacts": [],
+  "tags": []
+}

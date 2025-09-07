@@ -1,0 +1,32 @@
+[
+  {
+    "type": "data_drift",
+    "severity": "high",
+    "message": "Data drift detected: 0.809",
+    "timestamp": "2025-09-07T14:02:58.716642",
+    "drift_score": 0.8093611554785136
+  },
+  {
+    "type": "accuracy_drop",
+    "severity": "high",
+    "message": "Accuracy dropped by 0.057",
+    "timestamp": "2025-09-07T14:02:58.717319",
+    "baseline": 0.9970546298130945,
+    "current": 0.9397640522100823
+  },
+  {
+    "type": "data_drift",
+    "severity": "high",
+    "message": "Data drift detected: 0.543",
+    "timestamp": "2025-09-07T14:02:58.717585",
+    "drift_score": 0.5426446347075766
+  },
+  {
+    "type": "accuracy_drop",
+    "severity": "high",
+    "message": "Accuracy dropped by 0.088",
+    "timestamp": "2025-09-07T14:02:58.718131",
+    "baseline": 0.9677807191478492,
+    "current": 0.8794971482668479
+  }
+]
